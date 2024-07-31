@@ -94,6 +94,27 @@ tests for this interfaceId. This is merely a visual issue but the bridge will wo
 
 ## Bridging tokens from Optimism to Ethereum
 
+**[NOTE FROM OP](https://docs.optimism.io/builders/app-developers/tutorials/cross-dom-bridge-erc20):
+The final step to withdrawing tokens from L2 to L1 is to relay the withdrawal on L1. This can only
+happen after the fault proof period has elapsed. On OP Mainnet, this takes 7 days. We're currently
+testing fault proofs on OP Sepolia, so withdrawal times reflect Mainnet times.**
+
+Before bridging the tokens:
+
+- Make sure that you have both token contracts correctly set in the `.env` file. The Shutter Token
+  on Ethereum and the bridged Shutter Token on Optimism.
+- Make sure that you are on the desired set of networks between testnet and mainnet. You can switch
+  them by commenting and uncommenting in the `.env` file and the respective scripts.
+- In the `proveWithdraw.ts` and `withdrawToL1.ts` scripts at L25 and L26, make sure that the
+  `l1ChainId` and `l2ChainId` represents your desired networks.
+
+There is two ways of proving the withdrawal:
+
+- Using a hybrid approach
+- Using the OP SDK
+
+### Using a hybrid approach
+
 Before bridging the tokens, make sure that you have a valid bridged ERC20 set in
 `BRIDGED_SHUTTER_TOKEN_CONTRACT` in the `.env` file.
 
@@ -102,6 +123,23 @@ This will burn the tokens on one side and unlock them on the other side.
 
 ```bash
 $ yarn bridge:to:l1 --network op_sepolia
+```
+
+Get the resulting transaction hash on the terminal or any other tx hash that represented the burn of
+the synthetic assets on OP and place on the `withdrawHash` variable inside the `proveWithdraw.ts`
+script then run with:
+
+```bash
+$ yarn prove
+```
+
+### Using the OP SDK
+
+You can use the OP SDK to prove the withdrawal. The SDK will automatically withdraw the tokens and
+prove the withdrawal.
+
+```bash
+$ yarn withdraw:to:l1
 ```
 
 ## Minting more tokens on L1

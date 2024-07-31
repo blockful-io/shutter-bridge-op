@@ -38,7 +38,7 @@ async function main() {
     SHUTTER_TOKEN_CONTRACT,
     signer.address,
     amount,
-    200000,
+    300000,
     "0x",
   );
   const receipt = await tx1.wait();

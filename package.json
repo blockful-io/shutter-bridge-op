@@ -1,6 +1,7 @@
 {
   "name": "shutter-bridge",
   "dependencies": {
+    "@eth-optimism/sdk": "^3.3.2",
     "hardhat": "^2.12.7"
   },
   "devDependencies": {
@@ -32,6 +33,8 @@
     "deploy:l1": "npx hardhat run scripts/deployL1Shutter.ts",
     "deploy:l2": "npx hardhat run scripts/deployL2MintableERC20.ts",
     "bridge:to:l2": "npx hardhat run scripts/bridgeToL2.ts",
-    "bridge:to:l1": "npx hardhat run scripts/bridgeToL1.ts"
+    "bridge:to:l1": "npx hardhat run scripts/bridgeToL1.ts",
+    "withdraw:to:l1": "npx hardhat run scripts/withdrawToL1.ts",
+    "prove": "npx hardhat run scripts/proveWithdraw.ts"
   }
 }
