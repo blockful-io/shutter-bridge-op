@@ -16,13 +16,16 @@ async function main() {
   const name = "Shutter Token from Mainnet";
   const symbol = "SHU";
 
-  const test = "0x4200000000000000000000000000000000000013";
   const generatedAddress = await MintableFactory.callStatic.createOptimismMintableERC20(
-    test,
+    SHUTTER_TOKEN_CONTRACT,
     name,
     symbol,
   );
-  const tx0 = await MintableFactory.createOptimismMintableERC20(test, name, symbol);
+  const tx0 = await MintableFactory.createOptimismMintableERC20(
+    SHUTTER_TOKEN_CONTRACT,
+    name,
+    symbol,
+  );
   await tx0.wait();
 
   console.log(`OptimismMintableERC20 deployed ${symbol} at address ${generatedAddress}`);

@@ -29,7 +29,9 @@
     "compile": "npx hardhat compile",
     "test": "npx hardhat test",
     "mint": "npx hardhat run scripts/mint.ts",
-    "deploy": "npx hardhat run scripts/deploy.ts",
-    "deploy:l2": "npx hardhat run scripts/deployMintableERC20.ts"
+    "deploy:l1": "npx hardhat run scripts/deployL1Shutter.ts",
+    "deploy:l2": "npx hardhat run scripts/deployL2MintableERC20.ts",
+    "bridge:to:l2": "npx hardhat run scripts/bridgeToL2.ts",
+    "bridge:to:l1": "npx hardhat run scripts/bridgeToL1.ts"
   }
 }

@@ -5,7 +5,7 @@ async function main() {
   console.log(`Deploying contracts with the account: ${deployer.address}`);
 
   const Factory = await ethers.getContractFactory("ShutterToken");
-  const shutterToken = await Factory.deploy();
+  const shutterToken = await Factory.deploy(deployer.address);
   await shutterToken.deployed();
 
   console.log(`ShutterToken address: ${shutterToken.address}`);
