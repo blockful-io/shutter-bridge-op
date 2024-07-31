@@ -133,6 +133,9 @@ script then run with:
 $ yarn prove
 ```
 
+**NOTE: Any EOA can prove the withdraw for another address by providing the txHash of the withdraw
+operation**
+
 ### Using the OP SDK
 
 You can use the OP SDK to prove the withdrawal. The SDK will automatically withdraw the tokens and
@@ -141,6 +144,9 @@ prove the withdrawal.
 ```bash
 $ yarn withdraw:to:l1
 ```
+
+**NOTE: The owner of the tokens must be the prover, hence you need to provide a private key,
+therefore you can only withdraw as an EOA**
 
 ## Minting more tokens on L1
 

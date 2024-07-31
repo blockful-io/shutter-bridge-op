@@ -45,7 +45,9 @@ async function main() {
   await messenger.waitForMessageStatus(withdrawal.hash, optimism.MessageStatus.READY_TO_PROVE);
   console.log("Proving the withdrawal...");
   await messenger.proveMessage(withdrawal.hash);
-  console.log("Waiting for the withdrawal to be ready for relay...");
+  console.log(
+    "Waiting for the withdrawal to be ready for relay...Fault proof takes 7 days to finalize",
+  );
   await messenger.waitForMessageStatus(withdrawal.hash, optimism.MessageStatus.READY_FOR_RELAY);
   console.log("Finalizing the withdrawal...");
   await messenger.finalizeMessage(withdrawal.hash);

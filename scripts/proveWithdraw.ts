@@ -29,14 +29,16 @@ async function main() {
   });
 
   /// The tx hash of the withdrawal transaction on the L2
-  const withdrawHash = "0xf1d10c5f35212841c6f46d47d728e1d9b846f7846700182155ebc4142b05b1cc";
+  const withdrawHash = "0xb84e51c5d306d0a60c2314b57a21d10ffc971341321679d96f59a4b34a75a11e";
 
   /// Proving / Withdraw stages
   console.log("Waiting for the withdrawal to be ready to prove...");
   await messenger.waitForMessageStatus(withdrawHash, optimism.MessageStatus.READY_TO_PROVE);
   console.log("Proving the withdrawal...");
   await messenger.proveMessage(withdrawHash);
-  console.log("Waiting for the withdrawal to be ready for relay...");
+  console.log(
+    "Waiting for the withdrawal to be ready for relay...Fault proof takes 7 days to finalize",
+  );
   await messenger.waitForMessageStatus(withdrawHash, optimism.MessageStatus.READY_FOR_RELAY);
   console.log("Finalizing the withdrawal...");
   await messenger.finalizeMessage(withdrawHash);
